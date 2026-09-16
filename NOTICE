@@ -1,0 +1,12 @@
+BlindPilot
+==========
+
+BlindPilot is an open-source, voice-first Android assistant for blind users.
+
+This repository contains:
+
+- A fork of Andclaw (https://github.com/andforce/Andclaw), MIT License.
+- BlindPilot accessibility wrappers, server, safety engine, and public site.
+
+Do not commit secrets. Device private keys stay on the phone.
+Runtime cloud AI in production is Antigravity Agent only.

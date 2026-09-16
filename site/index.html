@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlindPilot — 给盲人用的语音手机助手</title>
+  <meta name="description" content="BlindPilot 是开源的语音优先 Android 助手。无 Root，无 Shizuku。密码和验证码永远不上云。">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header>
+    <p class="brand">BlindPilot</p>
+    <nav aria-label="页面导航">
+      <ul>
+        <li><a href="#what">是什么</a></li>
+        <li><a href="#privacy">隐私</a></li>
+        <li><a href="#safety">安全</a></li>
+        <li><a href="#status">服务状态</a></li>
+        <li><a href="#install">安装</a></li>
+        <li><a href="#source">开源</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h1>给盲人用的语音手机助手</h1>
+    <p class="lead">
+      BlindPilot 让盲人用户用说话来完成手机任务：听到简洁进度，随时本地停止，
+      危险动作必须确认，密码和验证码永远不会交给云端。
+    </p>
+    <p>这是一个开源项目。Android 无障碍服务在手机上执行动作，云端 Agent 只能通过经过校验的工具来建议下一步。</p>
+
+    <section id="what" aria-labelledby="what-title">
+      <h2 id="what-title">它做什么</h2>
+      <ul>
+        <li>用语音发起任务，用语音听到结果。</li>
+        <li>读取屏幕上的按钮和文字，按语义节点点击，而不是乱点坐标。</li>
+        <li>和 TalkBack 共存，不取代系统读屏。</li>
+        <li>不需要 Root，不需要 Shizuku，不需要电脑 ADB。</li>
+        <li>紧急停止在手机本地生效，即使服务器断开。</li>
+      </ul>
+      <p>停止口令：<strong>停止</strong>、<strong>取消</strong>、<strong>别动</strong>、<strong>停下来</strong>。</p>
+    </section>
+
+    <section id="privacy" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">隐私</h2>
+      <ul>
+        <li>密码、支付密码、验证码、卡片安全码标记为 SECRET，序列化时变成 <code>[PROTECTED]</code>。</li>
+        <li>截屏默认只留在内存，不保存到相册，也不会作为默认感知方式。</li>
+        <li>手机私钥生成在 Android Keystore，不会打进安装包，也不会上传。</li>
+        <li>不会把完整聊天记录交给云端 Agent。</li>
+      </ul>
+    </section>
+
+    <section id="safety" aria-labelledby="safety-title">
+      <h2 id="safety-title">安全策略</h2>
+      <p>SafetyEngine 是确定性程序，不是模型提示词。模型只能提议，能不能做由策略决定。</p>
+      <ul>
+        <li><strong>GREEN</strong>：打开应用、返回、桌面、滚动、读屏。可以自动执行。</li>
+        <li><strong>YELLOW</strong>：发消息、打电话、改普通设置。必须口头确认。</li>
+        <li><strong>RED</strong>：转账、购物、卸载、恢复出厂。第一版直接拒绝。</li>
+        <li><strong>SECRET</strong>：密码类内容永不交给 Agent。</li>
+      </ul>
+    </section>
+
+    <section id="status" aria-labelledby="status-title">
+      <h2 id="status-title">这台服务器</h2>
+      <p>当前站点域名：<strong>freus.cn</strong>。接口前缀 <code>/v1/</code>，健康检查：</p>
+      <ul>
+        <li><a href="/health/live">/health/live</a> — 进程存活</li>
+        <li><a href="/health/ready">/health/ready</a> — 就绪（不要求 Agent 在线）</li>
+        <li><a href="/v1/status">/v1/status</a> — 公开状态</li>
+      </ul>
+      <p>运行时云端 AI 只接 Antigravity Agent。没有 Gemini generateContent 回退，也没有 OpenAI / Grok / Anthropic 运行时。</p>
+    </section>
+
+    <section id="install" aria-labelledby="install-title">
+      <h2 id="install-title">安装（开发中）</h2>
+      <ol>
+        <li>安装 Android 12 或更高版本的调试包。</li>
+        <li>在系统设置里启用 BlindPilot 无障碍服务。TalkBack 用户可以在无障碍应用列表里听到说明。</li>
+        <li>打开「BlindPilot 无障碍核心」，先不连 AI，手动验证读屏、点击、输入、滚动、返回、桌面、打开应用、截屏。</li>
+        <li>配对码由服务器一次性签发。手机只上传公钥。</li>
+      </ol>
+      <p>语音发起任务属于后续里程碑。当前里程碑先保证每一步动作在没有 AI 时也能完成。</p>
+    </section>
+
+    <section id="source" aria-labelledby="source-title">
+      <h2 id="source-title">一起开源</h2>
+      <p>
+        源码：<a href="https://github.com/lp321227850/BlindPilot">github.com/lp321227850/BlindPilot</a>。
+        许可证：MIT。Android 底座 fork 自 <a href="https://github.com/andforce/Andclaw">andforce/Andclaw</a>。
+      </p>
+      <p>欢迎盲人用户、无障碍开发者和安全研究者一起改。问题请开 GitHub Issue，不要把密钥发到 Issue 里。</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>BlindPilot. 可靠失败比不惜一切完成任务更重要。</p>
+  </footer>
+</body>
+</html>
