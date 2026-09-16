@@ -76,14 +76,22 @@
     </section>
 
     <section id="install" aria-labelledby="install-title">
-      <h2 id="install-title">安装（开发中）</h2>
+      <h2 id="install-title">安装（给家属）</h2>
+      <p>当前是调试版，只给信任的人安装。Android 12 及以上。不需要 Root，不需要电脑。</p>
       <ol>
-        <li>安装 Android 12 或更高版本的调试包。</li>
-        <li>在系统设置里启用 BlindPilot 无障碍服务。TalkBack 用户可以在无障碍应用列表里听到说明。</li>
-        <li>打开「BlindPilot 无障碍核心」，先不连 AI，手动验证读屏、点击、输入、滚动、返回、桌面、打开应用、截屏。</li>
-        <li>配对码由服务器一次性签发。手机只上传公钥。</li>
+        <li>
+          下载调试包：
+          <a href="https://freus.cn/downloads/Andclaw.apk">Andclaw.apk</a>
+          （约 16 MB）。SHA-256：
+          <code>4675FE7628B8570D8E8B27FE3E45AE12543164C30D483523251C4D0E1E00091C</code>
+        </li>
+        <li>在系统设置里允许安装未知来源的应用，然后安装这个 APK。</li>
+        <li>打开「设置 → 无障碍」，启用 BlindPilot / Andclaw 无障碍服务。TalkBack 用户可以在应用列表里听到说明。</li>
+        <li>回到应用，打开「BlindPilot 无障碍核心」。先不要连云端 AI。</li>
+        <li>依次试：朗读屏幕、点击、长按、输入、滚动、返回、桌面、打开设置、打开时钟、截屏（只留在内存）。</li>
+        <li>点「本地停止」后再点点击，应该被拒绝。这是给盲人用户的紧急刹车。</li>
       </ol>
-      <p>语音发起任务属于后续里程碑。当前里程碑先保证每一步动作在没有 AI 时也能完成。</p>
+      <p>语音发起任务属于后续里程碑。现在先保证每一步动作在没有 AI 时也能完成，而且停得住。</p>
     </section>
 
     <section id="source" aria-labelledby="source-title">
@@ -91,6 +99,11 @@
       <p>
         源码：<a href="https://github.com/lp321227850/BlindPilot">github.com/lp321227850/BlindPilot</a>。
         许可证：MIT。Android 底座 fork 自 <a href="https://github.com/andforce/Andclaw">andforce/Andclaw</a>。
+      </p>
+      <p>
+        完整 git 历史（含上游 Andclaw，约 6.5 MB）：
+        <a href="https://freus.cn/downloads/blindpilot.bundle">blindpilot.bundle</a>。
+        克隆命令：<code>git clone https://freus.cn/downloads/blindpilot.bundle BlindPilot</code>
       </p>
       <p>欢迎盲人用户、无障碍开发者和安全研究者一起改。问题请开 GitHub Issue，不要把密钥发到 Issue 里。</p>
     </section>
