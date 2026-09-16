@@ -18,7 +18,7 @@ BlindPilot 不是“AI 能点按钮”。成功标准是盲人用户可以：
 | 里程碑 | 状态 |
 |---|---|
 | M0 上游审计 + 未改行为的 debug 构建 | 完成 |
-| M1 无障碍核心（无 AI 手工动作） | 完成 / 本仓库 |
+| M1 无障碍核心（无 AI 手工动作） | 完成。站点 https://freus.cn ，调试包可下载 |
 | M2 ScreenState / StableNodeId | 未开始 |
 | M3 语音 + TalkBack | 未开始 |
 | M4 设备配对与 WSS | 服务端骨架已有，Android 未接 |
@@ -27,7 +27,13 @@ BlindPilot 不是“AI 能点按钮”。成功标准是盲人用户可以：
 
 当前 APK 仍使用上游 applicationId `com.andforce.andclaw`，避免无谓改包名。请从主界面打开 **BlindPilot 无障碍核心**，不要用 Telegram/Kimi 作为盲人主路径。
 
-完整 Android 底座是 [andforce/Andclaw](https://github.com/andforce/Andclaw) 的 fork。本仓库已开源 BlindPilot 层、服务端与站点。本地完整 git 历史可在有 GitHub 凭证时 `git push` 全量上传。
+调试包：https://freus.cn/downloads/Andclaw.apk
+
+完整 git 历史（含 Andclaw 上游）：
+
+```bash
+git clone https://freus.cn/downloads/blindpilot.bundle BlindPilot
+```
 
 ## 架构
 
