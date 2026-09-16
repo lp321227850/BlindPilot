@@ -1,0 +1,39 @@
+{
+    servers {
+        protocols h1 h2
+    }
+}
+
+freus.cn {
+    tls /etc/caddy/certs/freus.cn.crt /etc/caddy/certs/freus.cn.key
+    encode zstd gzip
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options nosniff
+        Referrer-Policy same-origin
+        X-Frame-Options DENY
+    }
+
+    handle /health/* {
+        reverse_proxy 127.0.0.1:8080
+    }
+
+    handle /v1/* {
+        reverse_proxy 127.0.0.1:8080
+    }
+
+    handle {
+        root * /opt/blindpilot/site
+        file_server
+    }
+}
+
+s2.freus.cn {
+    tls /etc/caddy/certs/s2.freus.cn.crt /etc/caddy/certs/s2.freus.cn.key
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:8081
+}
+
+http://129.213.156.168 {
+    redir https://freus.cn{uri} permanent
+}
